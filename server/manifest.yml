@@ -1,0 +1,9 @@
+---
+memory: 2G
+disk_quota: 2G
+applications:
+- name: latency-server
+  host: latency-server
+  env:
+   LOG_LEVEL: INFO
+   TZ: America/New_York
