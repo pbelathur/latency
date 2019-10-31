@@ -3,6 +3,7 @@ package io.pivotal.service.client;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -24,14 +25,16 @@ public class ClientController {
     @Autowired
     private RestTemplate restTemplateApache;
 
+    @Value("${server.url}")
+    String serverUrl;
+
     @GetMapping("/")
     public String invokeService(HttpServletRequest request) {
 
-        LOG.info("-- Start invokeService--" + request.getHeader("transId"));
+        LOG.info("-- Start invokeService--" + request.getHeader("transId") + " on " + serverUrl);
 
         Instant start = Instant.now();
-
-        String url = "https://investserver.app.dev1.dal.pcf.syfbank.com/invoke";
+        String url = serverUrl+ "/invoke";
         HttpHeaders headers = new HttpHeaders();
         headers.set("transId", request.getHeader("transId"));
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
