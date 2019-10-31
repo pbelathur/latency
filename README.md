@@ -14,3 +14,8 @@
 6. git remote add origin https://github.com/pbelathur/latency.git
 7. git push -u origin master
 ```
+
+# Deploy
+
+`cf login -a api.run.pivotal.io` - login into PWS
+`cf api`- displays the API endpoint
