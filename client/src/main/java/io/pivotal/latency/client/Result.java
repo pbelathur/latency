@@ -1,4 +1,4 @@
-package io.pivotal.service.client;
+package io.pivotal.latency.client;
 
 import java.time.Instant;
 import java.util.UUID;

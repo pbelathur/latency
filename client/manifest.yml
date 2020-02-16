@@ -1,13 +1,12 @@
 ---
-memory: 2G
-disk_quota: 2G
 applications:
 - name: latency-client
-  host: latency-client
+  path: ./target/latency-client-0.0.1-SNAPSHOT.jar
+  buildpack: java_buildpack
   env:
    LOG_LEVEL: INFO
    TZ: America/New_York
    connection_request_timeout: 3000
    connect_timeout: 3000
    socket_timeout: 3000
-   server_url:
+   server_url: https://latency-server.cfapps.io

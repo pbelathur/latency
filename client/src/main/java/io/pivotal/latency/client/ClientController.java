@@ -1,4 +1,4 @@
-package io.pivotal.service.client;
+package io.pivotal.latency.client;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,14 +29,14 @@ public class ClientController {
     String serverUrl;
 
     @GetMapping("/")
-    public String invokeService(HttpServletRequest request) {
+    public List<Result> invokeService(HttpServletRequest request) {
 
-        LOG.info("-- Start invokeService--" + request.getHeader("transId") + " on " + serverUrl);
+        LOG.info("[Start invokeService]");
 
         Instant start = Instant.now();
         String url = serverUrl+ "/invoke";
+
         HttpHeaders headers = new HttpHeaders();
-        headers.set("transId", request.getHeader("transId"));
         headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
         HttpEntity entity = new HttpEntity<>(headers);
 
@@ -46,9 +46,9 @@ public class ClientController {
 
         int totalResults = results.size();
         long duration = Duration.between(start, end).toMillis();
-        String message = "Total results:" + totalResults + " total time taken:" + duration + "ms";
-        LOG.info(message);
-        LOG.info("-- End invokeService--" + request.getHeader("transId"));
-        return message;
+
+        String message = "Total results: " + totalResults + " total time taken: " + duration + "ms";
+        LOG.info("[End invokeService] " + message);
+        return results;
     }
 }

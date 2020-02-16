@@ -6,7 +6,8 @@ import java.util.UUID;
 public class Response {
 
     private UUID id;
-    private String name, description;
+    private String name;
+    private String description;
     private Instant when;
 
     public Response(UUID id, String name, String description, Instant when) {

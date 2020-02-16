@@ -1,4 +1,4 @@
-package io.pivotal.service.client;
+package io.pivotal.latency.client;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,26 +1,24 @@
-package io.pivotal.service.client;
+package io.pivotal.latency.client;
 
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.concurrent.TimeUnit;
 
 @Configuration
 public class RestTemplateWithApacheHttpConnectionPool {
 
     Logger log = LoggerFactory.getLogger(RestTemplateWithApacheHttpConnectionPool.class);
-
 
     @Value("${connection.request.timeout}")
     int conectionRequestTimeout;
@@ -50,9 +48,9 @@ public class RestTemplateWithApacheHttpConnectionPool {
                                           RequestConfig requestConfig) {
 
         CloseableHttpClient result = HttpClientBuilder.create()
-                .setConnectionManager(poolingHttpClientConnectionManager)
-                .setDefaultRequestConfig(requestConfig)
-                .build();
+                                                      .setConnectionManager(poolingHttpClientConnectionManager)
+                                                      .setDefaultRequestConfig(requestConfig)
+                                                      .build();
         return result;
     }
 
@@ -69,6 +67,7 @@ public class RestTemplateWithApacheHttpConnectionPool {
 
     @Bean
     public PoolingHttpClientConnectionManager poolingHttpClientConnectionManager() {
+
         PoolingHttpClientConnectionManager result = new PoolingHttpClientConnectionManager();
         result.setMaxTotal(maxTotal);
         result.setDefaultMaxPerRoute(defaultMaxPerRoute);

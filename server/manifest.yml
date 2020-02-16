@@ -1,9 +1,8 @@
 ---
-memory: 2G
-disk_quota: 2G
 applications:
 - name: latency-server
-  host: latency-server
+  path: ./target/latency-server-0.0.1-SNAPSHOT.jar
+  buildpack: java_buildpack
   env:
    LOG_LEVEL: INFO
    TZ: America/New_York

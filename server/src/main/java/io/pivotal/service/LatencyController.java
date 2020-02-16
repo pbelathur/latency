@@ -25,18 +25,17 @@ public class LatencyController {
     private EasyRandom easyRandom = new EasyRandom();
 
     @GetMapping("/invoke")
-    private List<Response> invokeService(HttpServletRequest request) {
+    private List<Response> invokeService() {
 
-        log.info("-- Start invokeService --" + request.getHeader("transId"));
+        log.info("[Start invokeService]");
+
         Instant start = Instant.now();
-        List<Response> responses = easyRandom.objects(Response.class, resultsGenerationSize).collect(Collectors.toList());
+        List<Response> responses = easyRandom.objects(Response.class, resultsGenerationSize)
+                                             .collect(Collectors.toList());
         Instant end = Instant.now();
-        log.info("-- End invokeService --" + request.getHeader("transId"));
 
         long duration = Duration.between(start, end).toMillis();
-        String message = "[" + request.getHeader("transId") + "] Total time taken: " + duration + "ms";
-        log.info(message);
-
+        log.info("[End invokeService] - elapsed time: " + Long.toString(duration));
         return responses;
     }
 }
