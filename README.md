@@ -1,19 +1,9 @@
-# latency
+# Latency Troubleshooting App.
 
-1. create the project
-2. cd latency
-3. git init
-4. git add --all
-5. git commit -m "Initial commit"
-```
-6. create repo *latency* in github
-```
-6. git remote add origin https://github.com/pbelathur/latency.git
-7. git push -u origin master
-```
+## USAGE:
 
-# Deploy
+### latency-troubleshooter-app
+1. The `results.generation.size` in `application.properties` controls the count of `Response` items in the JSON response from the controller.  
+   This value also controls the service execution time with `results.generation.size = 100000` results in `~ 2000ms` execution time.
 
-`cf login -a api.run.pivotal.io` - login into PWS
-
-`cf api`- displays the API endpoint
+2. tweak the `results.generation.size` to your needs. 
