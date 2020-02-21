@@ -1,9 +1,6 @@
 # latency
 
 1. create the project
-
-   ![](project-directory-structure.png)
-```
 2. cd latency
 3. git init
 4. git add --all
