@@ -21,7 +21,6 @@
 
 	<dependencies>
 		<dependency>
-
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
@@ -50,10 +49,27 @@
 			<version>4.0.0</version>
 		</dependency>
 
+		<!-- micrometer timing metrics -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-core</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>io.micrometer</groupId>
+			<artifactId>micrometer-registry-prometheus</artifactId>
+		</dependency>
+
+
 	</dependencies>
 
 	<build>
-		<finalName>latency-troubleshooter</finalName>
+		<finalName>${project.groupId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

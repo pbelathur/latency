@@ -1,0 +1,26 @@
+application:
+  name: springboot-starter-app
+  config:
+    results:
+      generation:
+        size: 100000
+
+server:
+  port: 8080
+
+logging:
+  level:
+    root: INFO
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, metrics, prometheus
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  main:
+    lazy-initialization: true
