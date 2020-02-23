@@ -1,32 +1,27 @@
 package latency_troubleshooter;
 
 import io.micrometer.core.annotation.Timed;
-import io.micrometer.core.instrument.Meter;
-import org.jeasy.random.EasyRandom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.time.Duration;
-import java.time.Instant;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 public class Controller {
 
     private static Logger log = LoggerFactory.getLogger(Controller.class);
 
-    private JsonGeneratorService service;
+    private ResponseGenerator responseGenerator;
 
-    public Controller(JsonGeneratorService service) {
-        this.service = service;
+    public Controller(ResponseGenerator responseGenerator) {
+        this.responseGenerator = responseGenerator;
     }
 
     @GetMapping("/invoke")
+    @Timed(description = "Time spent generating JSON response in generateJSON()")
     private List<Response> generateJSON() {
-       return service.generate();
+           return responseGenerator.generate();
     }
 }

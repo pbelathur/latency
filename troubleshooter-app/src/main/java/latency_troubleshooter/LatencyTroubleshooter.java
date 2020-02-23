@@ -12,9 +12,4 @@ public class LatencyTroubleshooter {
 	public static void main(String[] args) {
 		SpringApplication.run(LatencyTroubleshooter.class, args);
 	}
-
-	@Bean
-	public TimedAspect timedAspect(MeterRegistry registry) {
-		return new TimedAspect(registry);
-	}
 }
