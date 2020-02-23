@@ -33,6 +33,7 @@ public class JsonGeneratorService {
 
     @Timed(description = "Time spent generating JSON", longTask = true)
     public List<Response> generate() {
+
        return easyRandom.objects(Response.class, resultsGenerationSize)
                         .collect(Collectors.toList());
     }

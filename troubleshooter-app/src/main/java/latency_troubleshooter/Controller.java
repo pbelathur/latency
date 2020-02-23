@@ -26,7 +26,7 @@ public class Controller {
     }
 
     @GetMapping("/invoke")
-    private List<Response> invokeService() {
+    private List<Response> generateJSON() {
        return service.generate();
     }
 }
