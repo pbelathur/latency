@@ -7,3 +7,5 @@
    This value also controls the service execution time with `results.generation.size = 100000` results in `~ 2000ms` execution time.
 
 2. tweak the `results.generation.size` to your needs. 
+
+3. Metrics: `http://localhost:8080/actuator/prometheus`

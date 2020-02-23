@@ -27,15 +27,6 @@ public class Controller {
 
     @GetMapping("/invoke")
     private List<Response> invokeService() {
-
-        log.info("[Start invokeService]");
-
-        Instant start = Instant.now();
-        List<Response> responses = service.generate();
-        Instant end = Instant.now();
-
-        long duration = Duration.between(start, end).toMillis();
-        log.info("[End invokeService] - elapsed time: " + Long.toString(duration));
-        return responses;
+       return service.generate();
     }
 }
