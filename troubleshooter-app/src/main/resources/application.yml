@@ -1,9 +1,8 @@
 application:
   name: springboot-starter-app
-  config:
-    results:
-      generation:
-        size: 100000
+  results:
+    generation:
+      size: 100000
 
 server:
   port: 8080
