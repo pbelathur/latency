@@ -14,17 +14,13 @@ public class ResponseGenerator {
     private static Logger log = LoggerFactory.getLogger(ResponseGenerator.class);
 
     private EasyRandom easyRandom;
-    private AppConfig appConfig;
 
-    public ResponseGenerator(AppConfig appConfig) {
-
+    public ResponseGenerator() {
         easyRandom = new EasyRandom();
-        this.appConfig = appConfig;
     }
 
-    public List<Response> generate() {
-
-       return easyRandom.objects(Response.class, appConfig.getResultsGenerationSize())
+    public List<Response> generate(int size) {
+       return easyRandom.objects(Response.class, size)
                         .collect(Collectors.toList());
     }
 }

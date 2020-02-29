@@ -27,7 +27,7 @@ public class Controller {
     @GetMapping("/invoke")
     @Timed(description = "Time spent generating JSON response in generateJSON()")
     private List<Response> generateJSON() {
-           return responseGenerator.generate();
+       return responseGenerator.generate(appConfig.getResultsGenerationSize());
     }
 
     @PutMapping("/responseSize/{size}")
