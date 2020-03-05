@@ -1,5 +1,5 @@
 application:
-  name: springboot-starter-app
+  name: latency-troubleshooter-app
   results:
     generation:
       size: 100000
