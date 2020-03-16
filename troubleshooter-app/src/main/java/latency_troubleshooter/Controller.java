@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@AllArgsConstructor
 @RestController
+@AllArgsConstructor
 @RequestMapping("/api")
 public class Controller {
 
     private ResponseGenerator responseGenerator;
 
     @GetMapping("/generate/{size}")
-    @Timed(description = "Time spent generating *random* JSON response")
-    private List<Response> generateJSON(@PathVariable int size) {
+    @Timed(value="generateJSON")
+    private List<Response> generate(@PathVariable int size) {
         return responseGenerator.generate(size);
     }
 }
