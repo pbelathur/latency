@@ -4,8 +4,7 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.9.RELEASE'
 }
 
-group = 'org.w5nik'
-version = '0.0.1-SNAPSHOT'
+group = 'troubleshooter-app'
 sourceCompatibility = '1.8'
 
 configurations {
