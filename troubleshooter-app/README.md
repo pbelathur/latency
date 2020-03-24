@@ -12,25 +12,28 @@
 
 ### Using Docker
 
-1. Edit `targets` in `troubleshooter-app\prometheus\prometheus.xml`
+1. Edit `targets` in `troubleshooter-app\docker\prometheus\prometheus.xml`
 
     ```
     static_configs:
       - targets: ['LOCAL_MACHINE_IP:PORT']
     ```
-    - `LOCAL_MACHINE_IP` is **NOT** `localhost` or `127.0.0.1` its the actual IP address of the machine running the Docker Engine.
-    - `PORT` is the Spring Boot app port usually `8080`
+    - `LOCAL_MACHINE_IP` is **NOT** `localhost` or `127.0.0.1`
+       it is the actual IP address of the machine running Docker
+    - `PORT` is the Spring Boot application port usually `8080`
 
-2. docker-compose up
 
-3. Start the `troubleshooter-app`
+2. `cd docker`
+    `docker-compose up`
+
+3. Start the `troubleshooter-app`: `mvn spring-boot:run`
 
 4. Verify `prometheus` can communicate with `troubleshooter-app`: `http://localhost:9090/targets`
 
 5. Verify `grafana` can communicate with `prometheus`:  `http://localhost:3000`
 
-   - Under the `Recently viewed dashboards` you should see an entry for `Spring Boot 2.1 Statistics`
-   - Click on `Spring Boot 2.1 Statistics` you should see the `Instance = `LOCAL_MACHINE_IP:PORT` specified in `prometheus.xml`
+   - under the `Recently viewed dashboards` you should see an entry for `Spring Boot 2.1 Statistics`
+   - click on `Spring Boot 2.1 Statistics` you should see the `Instance =` `LOCAL_MACHINE_IP:PORT` specified in `prometheus.xml`
 
 
 ## NOTES
