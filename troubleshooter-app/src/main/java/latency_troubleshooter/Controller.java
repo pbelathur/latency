@@ -23,7 +23,6 @@ public class Controller {
 
     private static Logger log = LoggerFactory.getLogger(Controller.class);
 
-    private MeterRegistry meterRegistry;
     private ResultsGenerator resultsGenerator;
 
     @GetMapping("/generate/{size}")
