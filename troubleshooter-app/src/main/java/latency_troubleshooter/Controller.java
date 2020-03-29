@@ -1,6 +1,8 @@
 package latency_troubleshooter;
 
 import io.micrometer.core.annotation.Timed;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Timer;
 import lombok.AllArgsConstructor;
 
 import org.slf4j.Logger;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @AllArgsConstructor
@@ -19,16 +23,20 @@ public class Controller {
 
     private static Logger log = LoggerFactory.getLogger(Controller.class);
 
-    private ResponseGenerator responseGenerator;
+    private MeterRegistry meterRegistry;
+    private ResultsGenerator resultsGenerator;
 
     @GetMapping("/generate/{size}")
-    @Timed(value="generateJSON")
-    private List<Response> generate(@PathVariable int size) {
+    @Timed(description="generateJSON")
+    private Response generate(@PathVariable int size) {
 
         log.info("Start: generate JSON response");
-        List<Response> response =  responseGenerator.generate(size);
+        List<Result> results = resultsGenerator.generate(size);
         log.info("End: generate JSON response");
 
-        return response;
+        return Response.builder()
+                       .size(size)
+                       .results(results)
+                       .build();
     }
 }

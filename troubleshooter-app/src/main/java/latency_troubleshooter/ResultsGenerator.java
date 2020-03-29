@@ -1,6 +1,5 @@
 package latency_troubleshooter;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -16,13 +15,13 @@ import java.util.stream.Collectors;
 @Getter
 @RequiredArgsConstructor
 @Service
-public class ResponseGenerator {
+public class ResultsGenerator {
 
-    private static Logger log = LoggerFactory.getLogger(ResponseGenerator.class);
+    private static Logger log = LoggerFactory.getLogger(ResultsGenerator.class);
     private EasyRandom easyRandom = new EasyRandom();
 
-    public List<Response> generate(int size) {
-       return easyRandom.objects(Response.class, size)
+    public List<Result> generate(int size) {
+       return easyRandom.objects(Result.class, size)
                         .collect(Collectors.toList());
     }
 }
