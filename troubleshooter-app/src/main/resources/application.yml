@@ -12,7 +12,7 @@ management:
   endpoints:
     web:
       exposure:
-        include: health, metrics, prometheus, beans, env
+        include: health, metrics, prometheus, beans, env, generate-json-statistics
   endpoint:
     health:
       show-details: always

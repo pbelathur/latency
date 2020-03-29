@@ -7,10 +7,18 @@
 2. `./gradlew bootRun`
 
 3. **Usage:** `http://localhost:8080/api/generate/<response-size>`  
-   e.g. `http://localhost:8080/api/generate/200` generates a response with 200 items in JSON format.
+   e.g. http://localhost:8080/api/generate/200 generates a response with 200 items in JSON format.
 
 4. Metrics: `http://localhost:8080/actuator/prometheus`
    - Search for `generateJSON` in `http://localhost:8080/actuator/prometheus` to find the execution time statistics.
+
+5. Application Metrics: http://localhost:8080/actuator/generate-json-statistics
+   ```
+   {
+    "size":"100",
+    "service-execution-time":"4ms"
+   }
+   ```
 
 ### Application performance profiling using Prometheus and Grafana in Docker
 

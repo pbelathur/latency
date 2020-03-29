@@ -6,6 +6,9 @@ import org.springframework.boot.actuate.autoconfigure.metrics.MeterRegistryCusto
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @SpringBootApplication
 public class LatencyTroubleshooter {
 
@@ -16,5 +19,10 @@ public class LatencyTroubleshooter {
 	@Bean
 	MeterRegistryCustomizer<MeterRegistry> metricsCommonTags() {
 		return registry -> registry.config().commonTags("application", "LatencyTroubleshooter");
+	}
+
+	@Bean
+	Map runtimeStatistics() {
+		return new HashMap();
 	}
 }
