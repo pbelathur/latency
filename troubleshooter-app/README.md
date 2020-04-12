@@ -1,8 +1,8 @@
 # Latency Troubleshooting App.
 
 
-### How to run latency-troubleshooter-app
-
+### How to run latency-troubleshooter-app 
+#### Without Docker
 1. `cd troubleshooter-app`
 2. `./gradlew bootRun`
 
@@ -19,6 +19,10 @@
     "service-execution-time":"4ms"
    }
    ```
+#### With Docker
+1. `cd troubleshooter-app`
+2. `./gradlew jibDockerBuild --image=myimages/latency-troubleshooter-app`
+3. `docker run -p 8080:8080 -t myimages/latency-troubleshooter-app`
 
 ### Application performance profiling using Prometheus and Grafana in Docker
 
